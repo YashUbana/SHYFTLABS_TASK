@@ -25,11 +25,11 @@ class Piece{
         this.x = x;
         this.y = y;
     }
-    public Color getColor() {
+    public Color getColor() {   //This method will return the color of the piece for which x, y coordinate are given
         return color;
     }
 
-    public PieceType getType() {
+    public PieceType getType() {    //This method will return the type of the piece for which x, y coordinate are given
         return type;
     }
 
@@ -92,15 +92,20 @@ class ChessBoard {
 public class Assignments_2 {
     public static void main(String[] args) {
         ChessBoard board = new ChessBoard();
-        Piece pawn = new Piece(Color.WHITE, PieceType.PAWN, 1,3);
+        Piece pawn = new Piece(Color.WHITE, PieceType.PAWN, 1,2); // Initialize of the piece which we can to move
 
-        Piece x = board.getPiece(0,2); // Get the type of the piece on the current position
+        Piece x =  board.getPiece(2,3);     // Get the type of the piece on the current position
 
-        System.out.println(x.getType());
+       try {
+           System.out.println(pawn.getType());       //Prints the type of the piece
+       }catch (NullPointerException e){
+           System.out.println("No Piece is Present at the given Coordinates");
+       }
 
         board.placePiece(pawn,1,3);
 
-        board.movePiece(1,2,3,2);
+        board.movePiece(1,3,3,2);  //This will move the piece from current (curX, curY) coordinates of piece to (newX, newY) coordinates
+
 
     }
 }
